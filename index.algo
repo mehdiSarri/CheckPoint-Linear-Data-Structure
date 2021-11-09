@@ -1,0 +1,36 @@
+ALGORITHM CheckPointLinearDS1
+VAR
+    set3[] : INTEGER;
+    set2[] : INTEGER;
+    sumDist : INTEGER :=0;
+    sumDouble : INTEGER :=0;
+    i : INTEGER;
+    j : INTEGER;
+    index : INTEGER;
+BEGIN
+    FOR i FROM 0 TO set1.length -1 STEP 1  DO
+        index = 1;
+        FOR j FROM 0 TO set2.length -1 STEP 1  DO
+            IF (set1[i]=set2[j]) THEN
+                index = 0;
+                sumDouble+= set1[i]*2
+            END_IF
+        END_FOR
+        IF (index = 1) THEN
+            sumDist += set1[i]
+        END_IF
+    END_FOR
+     FOR i FROM 0 TO set2.length -1 STEP 1  DO
+        index = 1;
+        FOR j FROM 0 TO set1.length -1 STEP 1  DO
+            IF (set2[i]=set1[j]) THEN
+                index = 0;
+            END_IF
+        END_FOR
+        IF (index = 1) THEN
+            sumDist += set2[i]
+        END_IF
+    END_FOR
+    Write("Sum of distinct  : " + sumDist)
+    Write("Sum of Double  : " + sumDouble)
+END
